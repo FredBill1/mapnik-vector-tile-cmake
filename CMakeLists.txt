@@ -5,7 +5,6 @@ message(STATUS "ENABLE_SSE_MATH: ${ENABLE_SSE_MATH}")
 
 add_definitions(
     -DMAPNIK_VECTOR_TILE_LIBRARY=1
-    -D_USE_MATH_DEFINES=
 )
 
 if(ENABLE_SSE_MATH)
@@ -41,4 +40,8 @@ target_include_directories(mapnik-vector-tile
     ${PROTOZERO_INCLUDE_DIRS}
     ${MAPBOX_WAGYU_INCLUDE_DIRS}
     ${CMAKE_CURRENT_SOURCE_DIR}/src
+)
+target_compile_definitions(mapnik-vector-tile
+    PUBLIC
+    _USE_MATH_DEFINES
 )
