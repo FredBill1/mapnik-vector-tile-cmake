@@ -1,11 +1,17 @@
 cmake_minimum_required(VERSION 3.15)
 project(mapnik-vector-tile)
+option(ENABLE_SSE_MATH "Enable SSE math optimization" OFF)
+message(STATUS "ENABLE_SSE_MATH: ${ENABLE_SSE_MATH}")
+
 add_definitions(
     -DMAPNIK_VECTOR_TILE_LIBRARY=1
     -D_USE_MATH_DEFINES=
-
-    # -DSSE_MATH=
 )
+
+if(ENABLE_SSE_MATH)
+    add_definitions(-DSSE_MATH=)
+endif()
+
 find_package(mapnik CONFIG REQUIRED)
 find_path(PROTOZERO_INCLUDE_DIRS "protozero/basic_pbf_builder.hpp")
 find_package(Protobuf CONFIG REQUIRED)
