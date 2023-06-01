@@ -3,10 +3,6 @@ project(mapnik-vector-tile)
 option(ENABLE_SSE_MATH "Enable SSE math optimization" OFF)
 message(STATUS "ENABLE_SSE_MATH: ${ENABLE_SSE_MATH}")
 
-add_definitions(
-    -DMAPNIK_VECTOR_TILE_LIBRARY=1
-)
-
 if(ENABLE_SSE_MATH)
     add_definitions(-DSSE_MATH=)
 endif()
@@ -44,4 +40,5 @@ target_include_directories(mapnik-vector-tile
 target_compile_definitions(mapnik-vector-tile
     PUBLIC
     _USE_MATH_DEFINES
+    MAPNIK_VECTOR_TILE_LIBRARY=1
 )
