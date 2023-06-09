@@ -20,7 +20,7 @@ target_link_libraries(mapnik-vector-tile-proto PUBLIC ${Protobuf_LIBRARIES})
 target_include_directories(mapnik-vector-tile-proto PUBLIC ${CMAKE_CURRENT_BINARY_DIR} ${Protobuf_INCLUDE_DIRS})
 
 file(GLOB SRC_FILES src/*.cpp)
-add_library(mapnik-vector-tile STATIC
+add_library(mapnik-vector-tile SHARED
     ${SRC_FILES}
     ${PROTOSRCS}
     ${PROTOSHDRS}
